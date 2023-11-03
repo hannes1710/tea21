@@ -6,15 +6,20 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+
+// .bss segment
 int foo;
+
+// .data segment
+int data = 4711;
+
+// .rodata segment
+const int rodata = 5000; 
 
 auto main(int argc, char **argv) -> int
 {
-    /**
-     * The {fmt} lib is a cross platform library for printing and formatting text
-     * it is much more convenient than std::cout and printf
-     * More info at https://fmt.dev/latest/api.html
-     */
-    fmt::print("Hello world");
+
+    fmt::print("Wert der Variable rodata {}, Speicherort der Variable rodata {}", rodata, fmt::ptr(&rodata));
+
     return 0; /* exit gracefully*/
 }
